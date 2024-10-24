@@ -13,5 +13,30 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-content>
+    <ion-row>
+      <ion-col size="12">
+        <ion-input type="text" placeholder="Country" name="Country" [(ngModel)]="country"></ion-input>
+        <ion-button (click)="getUniversity()" expand="block" shape="round">
+          Get Universities
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="results != null">
+      <ion-col size="6" *ngFor="let result of results">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{result.name}}</ion-card-title>
+            <ion-card-subtitle>{{result.country}}</ion-card-subtitle>
+          </ion-card-header>
+        
+          <ion-card-content >
+            <a [href]="'https://'+result.domains[0]">{{result.domains[0]}}</a>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+  </ion-content>
 </ion-content>

@@ -13,5 +13,44 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-content>
+    <ion-row>
+      <ion-col size="12">
+        <ion-input type="text" placeholder="Name" name="name" [(ngModel)]="name"></ion-input>
+        <ion-button (click)="getAge()" expand="block" shape="round">
+          Get Age
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="result != undefined">
+      <ion-col size="12">
+        <ion-card>
+            @if (result.age < 18) {
+              <img alt="Joven" src="../../assets/Images/Joven.jpeg" />
+              <ion-card-header>
+                <ion-card-title>{{result.name}}</ion-card-title>
+                <ion-card-subtitle>Joven</ion-card-subtitle>
+              </ion-card-header>
+            } @else if (result.age < 55) {
+              <img alt="Adulto" src="../../assets/Images/Adulto.jpg" />
+              <ion-card-header>
+                <ion-card-title>{{result.name}}</ion-card-title>
+                <ion-card-subtitle>Adulto</ion-card-subtitle>
+              </ion-card-header>
+            } @else {
+              <img alt="Anciano" src="../../assets/Images/Anciano.jpg" />
+              <ion-card-header>
+                <ion-card-title>{{result.name}}</ion-card-title>
+                <ion-card-subtitle>Anciano</ion-card-subtitle>
+              </ion-card-header>  
+            }
+        
+          <ion-card-content>
+            {{result.age}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-content>
 </ion-content>

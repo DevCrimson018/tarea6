@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-tab3',
@@ -7,6 +8,16 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  country: string = ""
+  results: any[] = []
+  constructor(
+    private apiService: ApiService
+  ) {}
+
+  getUniversity() {
+    this.apiService.getUniversities(this.country).then(results => {
+      this.results = results
+    })
+  }
 
 }

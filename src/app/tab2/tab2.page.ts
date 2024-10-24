@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +8,16 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  name: string = ""
+  result: any 
+  constructor(
+    private apiService: ApiService
+  ) {}
+
+  getAge() {
+    this.apiService.getAge(this.name).then(result => {
+      this.result = result
+    })
+  }
 
 }
